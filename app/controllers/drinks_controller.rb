@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DrinksController < ApplicationController
-  before_action :set_drink, only: [:show, :update, :destroy]
+  before_action :set_drink, only: %i[show update destroy]
 
   # GET /drinks
   def index
@@ -10,7 +12,7 @@ class DrinksController < ApplicationController
 
   # GET /drinks/1
   def show
-    render json: @drink.to_json(include: { ingredients: { only: [:id, :description] } })
+    render json: @drink.to_json(include: { ingredients: { only: %i[id description] } })
   end
 
   # POST /drinks
